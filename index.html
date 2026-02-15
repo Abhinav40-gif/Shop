@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhinav Stores</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 25px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* Logo */
+.logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+/* Shop Name */
+.shop-name {
+    font-size: 26px;
+    font-weight: 700;
+    color: #333;
+}
+
+.tagline {
+    color: #777;
+    margin-bottom: 15px;
+}
+
+/* Timing box */
+.timing {
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Status */
+.status {
+    font-size: 26px;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.open {
+    background: #e6ffed;
+    color: #28a745;
+}
+
+.closed {
+    background: #ffe6e6;
+    color: #dc3545;
+}
+
+.holiday {
+    background: #fff3cd;
+    color: #ff9800;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.whatsapp-btn:hover {
+    background: #1ebe5d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Logo -->
+    <img src="logo.png" class="logo" alt="Shop Logo">
+
+    <div class="shop-name">AKSHAYA PATHAMKULAM</div>
+    <div class="tagline">Quality Service Everyday</div>
+
+    <div class="timing">
+        Monday – Saturday<br>
+        9:30 AM – 5:00 PM<br>
+        Sunday: Closed
+    </div>
+
+    <div id="shopStatus" class="status"></div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/917907709635" class="whatsapp-btn" target="_blank">
+        Chat on WhatsApp
+    </a>
+
+</div>
+
+<script>
+// Shop timing
+let openHour = 9;
+let openMinute = 30;
+let closeHour = 17;
+let closeMinute = 0;
+
+let now = new Date();
+let day = now.getDay();
+
+let currentHour = now.getHours();
+let currentMinute = now.getMinutes();
+
+let statusDiv = document.getElementById("shopStatus");
+
+// Sunday holiday
+if (day === 0) {
+    statusDiv.innerHTML = "SUNDAY HOLIDAY";
+    statusDiv.classList.add("holiday");
+} else {
+    let currentTime = currentHour * 60 + currentMinute;
+    let openTime = openHour * 60 + openMinute;
+    let closeTime = closeHour * 60 + closeMinute;
+
+    if (currentTime >= openTime && currentTime < closeTime) {
+        statusDiv.innerHTML = "OPEN";
+        statusDiv.classList.add("open");
+    } else {
+        statusDiv.innerHTML = "CLOSED";
+        statusDiv.classList.add("closed");
+    }
+}
+</script>
+
+</body>
+</html>
